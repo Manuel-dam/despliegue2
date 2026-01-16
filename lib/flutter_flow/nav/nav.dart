@@ -34,17 +34,32 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
-      errorBuilder: (context, state) => HomePageWidget(),
+      errorBuilder: (context, state) => PantallaAlumnosWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => HomePageWidget(),
+          builder: (context, _) => PantallaAlumnosWidget(),
         ),
         FFRoute(
-          name: HomePageWidget.routeName,
-          path: HomePageWidget.routePath,
-          builder: (context, params) => HomePageWidget(),
+          name: PantallaAlumnosWidget.routeName,
+          path: PantallaAlumnosWidget.routePath,
+          builder: (context, params) => PantallaAlumnosWidget(),
+        ),
+        FFRoute(
+          name: EditarAlumnoWidget.routeName,
+          path: EditarAlumnoWidget.routePath,
+          builder: (context, params) => EditarAlumnoWidget(
+            jsonAlumno: params.getParam(
+              'jsonAlumno',
+              ParamType.JSON,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: CrearAlumnoWidget.routeName,
+          path: CrearAlumnoWidget.routePath,
+          builder: (context, params) => CrearAlumnoWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

@@ -1,8 +1,9 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'home_page_widget.dart' show HomePageWidget;
+import '/index.dart';
+import 'pantalla_alumnos_widget.dart' show PantallaAlumnosWidget;
 import 'package:flutter/material.dart';
 
-class HomePageModel extends FlutterFlowModel<HomePageWidget> {
+class PantallaAlumnosModel extends FlutterFlowModel<PantallaAlumnosWidget> {
   ///  Local state fields for this page.
 
   List<dynamic> lista = [];
@@ -13,6 +14,11 @@ class HomePageModel extends FlutterFlowModel<HomePageWidget> {
       lista.insert(index, item);
   void updateListaAtIndex(int index, Function(dynamic) updateFn) =>
       lista[index] = updateFn(lista[index]);
+
+  ///  State fields for stateful widgets in this page.
+
+  // Stores action output result for [Custom Action - buscarAlumnosTodos] action in PantallaAlumnos widget.
+  List<dynamic>? resultado;
 
   @override
   void initState(BuildContext context) {}
