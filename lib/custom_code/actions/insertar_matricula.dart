@@ -8,9 +8,12 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-import 'package:supabase_flutter/supabase_flutter.dart';
-
-Future elimininarAlumno(String id) async {
+Future insertarMatricula(
+  String idAl,
+  String idAs,
+) async {
   final supabase = Supabase.instance.client;
-  await supabase.from('alumnos').delete().eq('id', id);
+  await supabase
+      .from('alumnos_asignatura')
+      .insert({'id_usuario': idAl, 'id_asignatura': idAs});
 }

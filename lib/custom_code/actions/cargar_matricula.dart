@@ -8,9 +8,21 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-import 'package:supabase_flutter/supabase_flutter.dart';
-
-Future elimininarAlumno(String id) async {
+Future<List<dynamic>> cargarMatricula() async {
   final supabase = Supabase.instance.client;
-  await supabase.from('alumnos').delete().eq('id', id);
+  final res = await supabase.from('alumnos_asignatura').select('''
+        id_usuario,
+        id_asignatura,
+        alumnos (
+          id,
+          nombre,
+          apellidos
+        ),
+        asignatura (
+          id,
+          nombre
+        )
+      ''');
+
+  return res as List<dynamic>;
 }

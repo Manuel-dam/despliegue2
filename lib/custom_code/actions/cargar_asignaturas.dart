@@ -10,7 +10,9 @@ import 'package:flutter/material.dart';
 
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-Future elimininarAlumno(String id) async {
+Future<List<dynamic>> cargarAsignaturas() async {
   final supabase = Supabase.instance.client;
-  await supabase.from('alumnos').delete().eq('id', id);
+  final res = await supabase.from('asignatura').select();
+
+  return res as List<dynamic>;
 }

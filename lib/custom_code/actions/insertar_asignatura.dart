@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-Future elimininarAlumno(String id) async {
+Future insertarAsignatura(String nombre) async {
   final supabase = Supabase.instance.client;
-  await supabase.from('alumnos').delete().eq('id', id);
+  await supabase.from('asignatura').insert({'nombre': nombre});
 }

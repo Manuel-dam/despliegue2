@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 
+import '/main.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
 import '/index.dart';
@@ -34,17 +35,19 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
-      errorBuilder: (context, state) => PantallaAlumnosWidget(),
+      errorBuilder: (context, state) => NavBarPage(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => PantallaAlumnosWidget(),
+          builder: (context, _) => NavBarPage(),
         ),
         FFRoute(
           name: PantallaAlumnosWidget.routeName,
           path: PantallaAlumnosWidget.routePath,
-          builder: (context, params) => PantallaAlumnosWidget(),
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'PantallaAlumnos')
+              : PantallaAlumnosWidget(),
         ),
         FFRoute(
           name: EditarAlumnoWidget.routeName,
@@ -60,6 +63,42 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: CrearAlumnoWidget.routeName,
           path: CrearAlumnoWidget.routePath,
           builder: (context, params) => CrearAlumnoWidget(),
+        ),
+        FFRoute(
+            name: PantallaAsignaturasWidget.routeName,
+            path: PantallaAsignaturasWidget.routePath,
+            builder: (context, params) => params.isEmpty
+                ? NavBarPage(initialPage: 'PantallaAsignaturas')
+                : NavBarPage(
+                    initialPage: 'PantallaAsignaturas',
+                    page: PantallaAsignaturasWidget(),
+                  )),
+        FFRoute(
+          name: EditarAsignaturaWidget.routeName,
+          path: EditarAsignaturaWidget.routePath,
+          builder: (context, params) => EditarAsignaturaWidget(
+            json: params.getParam(
+              'json',
+              ParamType.JSON,
+            ),
+          ),
+        ),
+        FFRoute(
+          name: CrearAsignaturaWidget.routeName,
+          path: CrearAsignaturaWidget.routePath,
+          builder: (context, params) => CrearAsignaturaWidget(),
+        ),
+        FFRoute(
+          name: PantallaMatriculaWidget.routeName,
+          path: PantallaMatriculaWidget.routePath,
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'PantallaMatricula')
+              : PantallaMatriculaWidget(),
+        ),
+        FFRoute(
+          name: CrearMatriculaWidget.routeName,
+          path: CrearMatriculaWidget.routePath,
+          builder: (context, params) => CrearMatriculaWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

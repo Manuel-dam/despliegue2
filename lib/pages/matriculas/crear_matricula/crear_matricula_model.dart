@@ -1,8 +1,9 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'crear_alumno_widget.dart' show CrearAlumnoWidget;
+import '/index.dart';
+import 'crear_matricula_widget.dart' show CrearMatriculaWidget;
 import 'package:flutter/material.dart';
 
-class CrearAlumnoModel extends FlutterFlowModel<CrearAlumnoWidget> {
+class CrearMatriculaModel extends FlutterFlowModel<CrearMatriculaWidget> {
   ///  State fields for stateful widgets in this page.
 
   // State field(s) for TextField widget.

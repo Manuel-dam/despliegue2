@@ -241,7 +241,7 @@ class _PantallaAlumnosWidgetState extends State<PantallaAlumnosWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.86, 0.87),
+                alignment: AlignmentDirectional(0.95, 0.95),
                 child: FlutterFlowIconButton(
                   borderRadius: 8.0,
                   buttonSize: 40.0,
