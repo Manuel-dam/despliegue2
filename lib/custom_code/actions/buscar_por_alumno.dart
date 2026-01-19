@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
+import 'package:supabase_flutter/supabase_flutter.dart';
+
 Future<List<dynamic>> buscarPorAlumno(String id) async {
   final supabase = Supabase.instance.client;
   final res = await supabase.from('alumnos_asignatura').select('''

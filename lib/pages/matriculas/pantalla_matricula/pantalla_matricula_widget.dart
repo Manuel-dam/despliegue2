@@ -166,7 +166,7 @@ class _PantallaMatriculaWidgetState extends State<PantallaMatriculaWidget> {
                           options: _model.listaAsi
                               .map((e) => getJsonField(
                                     e,
-                                    r'''$.nombre''',
+                                    r'''$.id''',
                                   ))
                               .toList()
                               .map((e) => e.toString())
@@ -270,8 +270,14 @@ class _PantallaMatriculaWidgetState extends State<PantallaMatriculaWidget> {
                                       false;
                                   if (confirmDialogResponse) {
                                     await actions.eliminarMatricula(
-                                      '',
-                                      '',
+                                      getJsonField(
+                                        listaMatriItem,
+                                        r'''$.alumnos.id''',
+                                      ).toString(),
+                                      getJsonField(
+                                        listaMatriItem,
+                                        r'''$.asignatura.id''',
+                                      ).toString(),
                                     );
 
                                     context.pushNamed(
