@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/index.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'crear_matricula_model.dart';
 export 'crear_matricula_model.dart';
@@ -29,16 +28,6 @@ class _CrearMatriculaWidgetState extends State<CrearMatriculaWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => CrearMatriculaModel());
-
-    // On page load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      await actions.insertarMatricula(
-        _model.textController1.text,
-        _model.textController2.text,
-      );
-
-      context.pushNamed(PantallaMatriculaWidget.routeName);
-    });
 
     _model.textController1 ??= TextEditingController();
     _model.textFieldFocusNode1 ??= FocusNode();
@@ -322,11 +311,12 @@ class _CrearMatriculaWidgetState extends State<CrearMatriculaWidget> {
                 padding: EdgeInsetsDirectional.fromSTEB(25.0, 25.0, 25.0, 25.0),
                 child: FFButtonWidget(
                   onPressed: () async {
-                    await actions.insertarAsignatura(
+                    await actions.insertarMatricula(
                       _model.textController1.text,
+                      _model.textController2.text,
                     );
 
-                    context.pushNamed(PantallaAsignaturasWidget.routeName);
+                    context.pushNamed(PantallaMatriculaWidget.routeName);
                   },
                   text: 'Crear Matricula',
                   options: FFButtonOptions(
