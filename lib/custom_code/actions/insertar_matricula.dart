@@ -15,7 +15,6 @@ Future insertarMatricula(
   String idAs,
 ) async {
   final supabase = Supabase.instance.client;
-  await supabase
-      .from('alumnos_asignatura')
-      .insert({'id_usuario': idAl, 'id_asignatura': idAs});
+  await supabase.from('alumnos_asignatura').insert(
+      {'id_usuario': int.parse(idAl), 'id_asignatura': int.parse(idAs)});
 }
